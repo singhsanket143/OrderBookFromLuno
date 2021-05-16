@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Luno Order Book</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="favicon.png"/>
+    <link rel="stylesheet" href=styles/styles.css>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="js/script.js"></script>
+
+</head>
+
+<body>
+
+<div class="content" id="app">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-3 col-sm-2 col-xs-0">
+                <!-- empty for display pursposed -->
+            </div>
+            <div class="col-md-6 col-sm-8 col-xs-12">
+                <div class="page-header">
+                    <h1 class="text-center">Luno Order Book</h1>
+                </div>
+                <div class="alert alert-warning text-center" role="alert" v-if="error_message.length > 0">
+                    {{error_message}}
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-2 col-xs-0">
+                <!-- empty for display pursposed -->
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="main-column" v-if="asks.length > 0">
+
+                <table>
+                    <tr>
+                        <th class="text-left">
+                            <small>Price</small>
+                        </th>
+                        <th class="text-right">
+                            <small>Volume</small>
+                        </th>
+                    </tr>
+                </table>
+
+                <div ref="askstable" class="order-table pre-scrollable">
+                    <table class="table-striped">
+                        <tr v-for="item in asksToRender" v-bind:class="[item.isLatest ? latestClass : '']">
+                            <td>
+                                <small>{{item.price}}</small>
+                            </td>
+                            <td class="text-right">
+                                <small>{{item.volume.toFixed(6)}}</small>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+                <div class="row text-center spread">
+                    <small>{{spread}} Spread</small>
+                </div>
+
+                <div class="order-table pre-scrollable ">
+
+                    <table class="table-striped">
+                        <tr v-for="item in bidsToRender" v-bind:class="[item.isLatest  ? latestClass : '']">
+                            <td>
+                                <small>{{item.price}}</small>
+                            </td>
+                            <td class="text-right">
+                                <small>{{item.volume.toFixed(6)}}</small>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

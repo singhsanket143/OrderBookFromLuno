@@ -1,0 +1,62 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    border: 1px solid transparent;
+}
+
+.content {
+    min-height: 100%;
+    position: relative;
+    margin-bottom: -60px;
+}
+
+.order-table {
+    overflow-y: auto;
+    height: 400px;
+}
+
+.main-column {
+    width: 200px;
+    margin: auto;
+}
+
+.updated-order {
+    color: #bc027c;
+}
+
+td, th {
+    width: 100px;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.spread {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* Scrollbar styling */
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
